@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Metal029_2K_Color.jpg" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Target.tscn" type="PackedScene" id=3]
+[ext_resource path="res://s2/scene.gltf" type="PackedScene" id=4]
+[ext_resource path="res://s1/scene.gltf" type="PackedScene" id=5]
+[ext_resource path="res://Turret.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Health_Pickup.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 100, 100 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( 50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50 )
+
+[node name="ubu" type="Spatial"]
+
+[node name="room" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="room"]
+editor/display_folded = true
+transform = Transform( 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="room/MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.46485, 0.0419024 )
+
+[node name="CollisionShape" type="CollisionShape" parent="room/MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98311, -1.05471, -24.1593 )
+
+[node name="targets" type="Spatial" parent="."]
+
+[node name="Target_Whole" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( 0.7, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 22.8311, 18.3742, 39.754 )
+
+[node name="Target_Whole2" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( -2.18557e-008, 0, -0.5, 0, 0.7, 0, 0.5, 0, -2.18557e-008, 5.85848, 18.6536, 1.74677 )
+
+[node name="Target_Whole3" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-008, 0, -0.6, 0, 0.8, 0, 0.6, 0, -2.62268e-008, 5.22677, 14.0734, 15.9204 )
+
+[node name="Target_Whole4" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( -2.62268e-008, 0, 0.6, 0, 0.8, 0, -0.6, 0, -2.62268e-008, 40.0817, 6.35057, 17.5814 )
+
+[node name="Target_Whole6" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -42.4244, 16.7582, -16.7155 )
+
+[node name="Target_Whole9" parent="targets" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -44.9062, 18.8488, -36.2563 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.235809, 0, 0 )
+
+[node name="Scene Root" parent="Spatial" instance=ExtResource( 4 )]
+transform = Transform( -2.62268e-007, 0, 7, 0, 8, 0, -6, 0, -3.0598e-007, 90.2002, 22, 40.9711 )
+
+[node name="Scene Root2" parent="Spatial" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -1.78391, 0.213428, 0.785309 )
+
+[node name="Turret" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 24.9833, 1.46321, 27.2606 )
+
+[node name="Turret2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -2.18557e-008, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-008, -37.3536, 1.98854, -16.1135 )
+
+[node name="Health_Pickup5" parent="." instance=ExtResource( 7 )]
+transform = Transform( -0.6, 0, -5.24537e-008, 0, 0.8, 0, 5.24537e-008, 0, -0.6, -15.1733, 7.01659, -41.783 )
+
+[node name="Health_Pickup2" parent="." instance=ExtResource( 7 )]
+transform = Transform( -2.62268e-008, 0, -0.6, 0, 0.8, 0, 0.6, 0, -2.62268e-008, -36.6807, 6.20006, -29.1786 )
+
+[node name="Health_Pickup" parent="." instance=ExtResource( 7 )]
+transform = Transform( -2.62268e-008, 0, -0.6, 0, 0.8, 0, 0.6, 0, -2.62268e-008, 6.574, 2.39055, 9.83437 )
+
+[node name="Health_Pickup3" parent="." instance=ExtResource( 7 )]
+transform = Transform( -2.62268e-008, 0, 0.6, 0, 0.8, 0, -0.6, 0, -2.62268e-008, 35.8604, 2.07549, 18.2978 )
